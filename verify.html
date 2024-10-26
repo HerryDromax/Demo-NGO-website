@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Our Volunteers - JaagrukJanta</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        header {
+            background-color: tan;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-weight: bold;
+            font-size: 24px;
+        }
+        nav {
+            display: flex;
+            gap: 15px;
+        }
+        nav a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+        .content {
+            text-align: center;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        form input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        form button {
+            padding: 10px 20px;
+            background-color: tan;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">JaagrukJanta</div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="volunteer.html">Become a Volunteer</a>
+        <a href="#">Make Donation</a>
+        <a href="verify.html">Verify Our Volunteers</a>
+    </nav>
+</header>
+
+<div class="content">
+    <h1>Verify Our Volunteers</h1>
+    <form id="verifyForm">
+        <input type="text" id="registrationNumber" placeholder="Enter Registration Number" required>
+        <button type="button" onclick="verifyVolunteer()">Verify</button>
+    </form>
+    <div id="result"></div>
+</div>
+
+<script>
+    const volunteerDatabase = {
+        "12345": "certificate1.pdf",
+        "67890": "certificate2.pdf"
+    };
+
+    function verifyVolunteer() {
+        const regNumber = document.getElementById('registrationNumber').value;
+        const resultDiv = document.getElementById('result');
+        if (volunteerDatabase[regNumber]) {
+            resultDiv.innerHTML = `<a href="${volunteerDatabase[regNumber]}" target="_blank">View Certificate</a>`;
+        } else {
+            resultDiv.innerHTML = "<p>Volunteer not found.</p>";
+        }
+    }
+</script>
+
+</body>
+</html>
